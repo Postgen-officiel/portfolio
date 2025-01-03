@@ -1,0 +1,223 @@
+body {
+    background: #232323;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: purple;
+}
+
+
+@keyframes gradientShift {
+    0% {
+        background-position: 200% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+p {
+    color: rgb(137, 3, 247);
+    display:inline-block;
+}
+ 
+.wave-animation { 
+    display: inline-block; 
+    animation: wave 2s infinite; /* Animation par défaut */ 
+} 
+
+@keyframes wave { 
+    0%, 100% { 
+        transform: translateY(0); 
+    } 
+    50% { 
+        transform: translateY(-10px); 
+    } 
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #575757;
+    border-radius: 5px;
+}
+
+main {
+    text-align: center;
+    padding: 20px;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 45px;
+}
+
+
+.card {
+    position: relative;
+    border-radius: 9%;
+    flex: 1 1 45%;
+    max-width: 560px;
+    height: 350px;
+    margin: 10px;
+    box-sizing: border-box;
+    border: 3px solid transparent; /* Ajout du bord ici */
+    overflow: hidden;
+  }
+  
+  .card::before {
+    content: "";
+    position: absolute;
+    top: -40.43%;
+    left: -40.5%;
+    transform: translate(0%, 0.8%);
+    width: calc(180% + 3px);
+    height: calc(183% + 3px);
+    border-radius: inherit; /* Hérite le border-radius de la carte */
+    border: 3px solid transparent;
+    background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet); 
+    animation: color-rotate 4s linear infinite;
+    padding: 5px;
+    box-sizing: border-box;
+    z-index: -1;
+  }
+
+  
+  @keyframes color-rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+.card1 {
+    width: 100%;
+}
+
+.card2 {
+    width: 100%;
+}
+
+h2 {
+    background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, blueviolet, firebrick);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    margin: 0;
+    padding: 10px 0;
+    color: '';
+    display: inline-block;
+    animation: gradientShift 5s linear infinite;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 200% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.card-image {
+    width: calc(100% - 3px);
+    height: calc(100% - 3px);
+    top: 50%;
+    left: 50%;
+    transform: translate(0%, 0.5%);
+    border-radius: 9%;
+    object-fit: cover;
+    transition: transform 0.1s ease, transform-origin 0.1s ease;
+    z-index: 2;
+}
+
+/* Responsiveness */
+@media (max-width: 600px) {
+    header nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .card-container {
+        flex-direction: column; /* Aligner verticalement sur petits écrans */
+        align-items: center; /* Centrer les cartes */
+    }
+
+    .card {
+        width: 100%; /* Prendre toute la largeur sur petits écrans */
+        margin: 10px 0;
+    }
+}
+
+.matrix {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -2;
+}
+
+.matrix div { 
+    position: absolute; 
+    color: green;
+    font-size: 14px; 
+    line-height: 14px; 
+    white-space: nowrap; 
+    will-change: transform; 
+    animation: fall linear infinite; 
+}
+
+.column {
+    position: absolute;
+    top: -100;
+    width: 14px;
+    animation: fall linear infinite;
+}
+
+.symbol { 
+    display: block; 
+    opacity: 1; 
+    transition: opacity 1s;
+}
+
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(610%);
+    }
+}

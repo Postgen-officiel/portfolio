@@ -1,0 +1,201 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffffff;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    user-select: none;
+    overflow: hidden;
+}
+
+#calculator-container {
+    perspective: 1000px;  /* Créer une profondeur 3D pour l'effet de parallaxe */
+    transition: transform 0.01s ease-out;  /* Ajoutez une transition fluide pour l'effet */
+    will-change: transform;  /* Optimiser les performances */
+    transform: translateZ(0);  /* Utiliser le rendu GPU pour améliorer la performance */
+}
+
+/* Ajoutez des styles pour les boutons pour qu'ils soient également fluides */
+.button {
+    transition: all 0.4s ease;
+}
+
+.button:active {
+    transform: translateY(4px); /* Effet de clic fluide */
+}
+
+.calculator {
+    background-color: silver;
+    border: none;
+    border-left: 6px solid #b0b0b0; /* Bordure à gauche pour l'effet de surélévation */
+    border-bottom: 5px solid #b0b0b0; /* Bordure en bas pour l'effet de surélévation */
+    border-radius: 15px;
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3), 0 16px 20px rgba(0, 0, 0, 0.4); /* Effet 3D amélioré */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto repeat(5, 1fr);
+    gap: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 90vw;
+    max-width: 400px;
+    height: auto;
+    position: relative;
+    margin: auto;
+    overflow: hidden;
+    
+}
+
+.branding {
+    grid-column: span 4;
+    font-size: 2em;
+    display: flex;
+    color: #333;
+    font-family: 'Script', cursive;
+}
+
+.display {
+    grid-column: span 4;
+    background-color: #333333;
+    color: #ffffff;
+    font-size: 1.65em;
+    padding: 10px;
+    text-align: right;
+    box-sizing: border-box;
+    height: 50px;
+    overflow-x: auto; /* Ajout du défilement horizontal */
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+}
+
+.display-exceed {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 0.4em;
+    color: lightyellow;
+    max-width: 100%; /* Ajustez la largeur maximale de l'excédent */
+    text-align: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.buttons {
+    display: contents;
+}
+
+button {
+    background-color: #f9f9f9;
+    border: none;
+    border-left: 4px solid #cccccc; /* Bordure à gauche pour l'effet de surélévation */
+    border-bottom: 4px solid #cccccc; /* Bordure en bas pour l'effet de surélévation */
+    border-radius: 10px;
+    font-size: 1.2em;
+    padding: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease, border 0.04s ease-in;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+button:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.7), rgba(0, 0, 0, 0.1));
+    z-index: -1;
+}
+
+button:hover {
+    background-color: #e0e0e0;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.5);
+    opacity: 300%;
+}
+
+button:active {
+    background-color: #d1d1d1d1;
+    border-left: 0 solid #cccccc; /* Disparaître la bordure à gauche */
+    border-bottom: 0 solid #cccccc; /* Disparaître la bordure en bas */
+    box-shadow: none;
+    transform: translateY(4px); /* Abaisse le bouton */
+    transition: transform 0.04s ease-in;
+}
+
+button.equals {
+    grid-column: span 3;
+    background-color: rgb(22, 19, 289);  /* Couleur de fond conservée */
+    color: whitesmoke;
+    border-left: 4px solid rgba(13, 0, 163, 0.4); /* Bordure à gauche pour l'effet de surélévation */
+    border-bottom: 4px solid rgba(13, 0, 163, 0.6);/* Bordure en bas pour l'effet de surélévation */
+    position: relative;
+}
+
+button.equals:hover {
+    background-color: rgb(22, 19, 289);
+    opacity: 300%;
+}
+
+button.equals:active {
+    background-color: rgb(22, 19, 289);
+    border-left: 0 solid rgba(13, 0, 143, 0.4); /* Disparaître la bordure à gauche */
+    border-bottom: 0 solid rgba(13, 0, 153, 0.6); /* Disparaître la bordure en bas */
+    box-shadow: none;
+    transform: translateY(4px);
+    transition: transform 0.04s ease-in;
+}
+
+button.clear {
+    background-color: #ff1111;
+    color: whitesmoke;
+    border-left: 4px solid rgba(153, 0, 0, 0.4); /* Bordure à gauche pour l'effet de surélévation */
+    border-bottom: 4px solid rgba(153, 0, 0, 0.6); /* Bordure en bas pour l'effet de surélévation */
+}
+
+button.clear:hover {
+    background-color: #ff1111;
+    opacity: 300%;
+}
+
+button.clear:active {
+    background-color: #ff1d1d;
+    border-left: 0 solid rgba(153, 0, 0, 0.4); /* Disparaître la bordure à gauche */
+    border-bottom: 0 solid rgba(153, 0, 0, 0.6); /* Disparaître la bordure en bas */
+    box-shadow: none;
+    transform: translateY(4px);
+    transition: transform 0.04s ease-in;
+}
+
+button.delete {
+    background-color: gray;
+    color: black;
+    border-left: 4px solid rgba(62, 62, 62, 0.4); /* Bordure à gauche pour l'effet de surélévation */
+    border-bottom: 4px solid rgba(62, 62, 62, 0.6);
+    position: relative; /* Assurez-vous que le bouton est positionné relativement */
+    margin: 0;
+    padding: 0;
+}
+
+button.delete:hover {
+    background-color: gray;
+    opacity: 300%;
+}
+
+button.delete:active {
+    background-color: gray;
+    border-left: 0 solid rgba(62, 62, 62, 0.4); /* Disparaître la bordure à gauche */
+    border-bottom: 0 solid rgba(62, 62, 62, 0.6);
+    box-shadow: none;
+    transform: translate(0, 4px); /* Ajustement pour uniquement déplacer verticalement */
+    transition: transform 0.04s ease-in;
+}

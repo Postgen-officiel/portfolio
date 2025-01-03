@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculatrice</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="calculator-container" class="calculator">
+        <div class="branding">Posty+®</div>
+        <div id="display" class="display">
+    <span id="main-display"></span>
+    <span id="display-exceed" class="display-exceed"></span>
+</div>
+        <div class="buttons">
+            <button id="sin" onclick="appendTrigFunction('sin')">sin</button>
+            <button id="cos" onclick="appendTrigFunction('cos')">cos</button>
+            <button id="tan" onclick="appendTrigFunction('tan')">tan</button>
+            <button class="clear" onclick="clearDisplay()">CE</button>
+            <button onclick="appendNumber('1')">1</button>
+            <button onclick="appendNumber('2')">2</button>
+            <button onclick="appendNumber('3')">3</button>
+            <button onclick="appendOperator('+')">+</button>
+            <button onclick="appendNumber('4')">4</button>
+            <button onclick="appendNumber('5')">5</button>
+            <button onclick="appendNumber('6')">6</button>
+            <button onclick="appendOperator('-')">-</button>
+            <button onclick="appendNumber('7')">7</button>
+            <button onclick="appendNumber('8')">8</button>
+            <button onclick="appendNumber('9')">9</button>
+            <button onclick="appendOperator('÷')">÷</button>
+            <button onclick="appendParenthesis()">(‎ ‎ ‎ ‎)</button>
+            <button onclick="appendNumber('0')">0</button>
+            <button onclick="appendDot()">,</button>
+            <button onclick="appendOperator('×')">×</button>
+            <button onclick="appendExponent()">^</button>
+            <button id="percentage" onclick="appendPercentage()">%</button>
+            <button onclick="appendPi()">π</button>
+            <button id="square-root" onclick="appendSquareRoot()">√</button>
+            <button class="delete" onclick="deleteLastCharacter()">⌫</button>
+            <button onclick="calculateResult()" class="equals">=</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+/* projets.css */
+body {
+    background: #232323;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0px;
+}
+
+h1 {
+    color: purple;
+}
+
+h2 {
+    background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, blueviolet, firebrick);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: '';
+    display: inline-block;
+    animation: gradientShift 5s linear infinite;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 200% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+p {
+    color: rgb(137, 3, 247);
+    display:inline-block;
+}
+ 
+.wave-animation { 
+    display: inline-block; 
+    animation: wave 2s infinite; /* Animation par défaut */ 
+} 
+
+@keyframes wave { 
+    0%, 100% { 
+        transform: translateY(0); 
+    } 
+    50% { 
+        transform: translateY(-10px); 
+    } 
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #575757;
+    border-radius: 5px;
+}
+
+
+.project { 
+    margin-bottom: 30px;
+} 
+
+main {
+    text-align: center;
+    padding: 60px;
+}
+
+.project h2 { 
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(90deg, red, rgb(148, 97, 0), rgb(148, 148, 0), green, blue, indigo, violet);
+    background-clip: text;
+}
+
+iframe {
+    width: 100%;
+    height: 800px;
+    border-radius: 15px;
+    border: 3px solid #ccc;
+    margin-top: -15px;
+}
+
+.matrix {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -2;
+}
+
+.matrix div { 
+    position: absolute; 
+    color: green;
+    font-size: 14px; 
+    line-height: 14px; 
+    white-space: nowrap; 
+    will-change: transform; 
+    animation: fall linear infinite; 
+}
+
+.column {
+    position: absolute;
+    top: -100;
+    width: 14px;
+    animation: fall scroll linear infinite;
+}
+
+.symbol { 
+    display: block; 
+    opacity: 1; 
+    transition: opacity 1s;
+}
+
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(100%);
+    }
+}

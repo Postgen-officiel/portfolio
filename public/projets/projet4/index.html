@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="metronome.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Metronome</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="red flame"></div>
+      <div class="orange flame"></div>
+      <div class="yellow flame"></div>
+      <div class="white flame"></div>
+      <div class="blue circle"></div>
+      <div class="black circle"></div>
+    </div>
+    <div class="container">
+      <div class="red flame"></div>
+      <div class="orange flame"></div>
+      <div class="yellow flame"></div>
+      <div class="white flame"></div>
+      <div class="blue circle"></div>
+      <div class="black circle"></div>
+    </div>
+    <div class="container">
+      <div class="red flame"></div>
+      <div class="orange flame"></div>
+      <div class="yellow flame"></div>
+      <div class="white flame"></div>
+      <div class="blue circle"></div>
+      <div class="black circle"></div>
+    </div>
+    <div class="container">
+      <div class="red flame"></div>
+      <div class="orange flame"></div>
+      <div class="yellow flame"></div>
+      <div class="white flame"></div>
+      <div class="blue circle"></div>
+      <div class="black circle"></div>
+    </div>
+    <div class="container">
+      <div class="red flame"></div>
+      <div class="orange flame"></div>
+      <div class="yellow flame"></div>
+      <div class="white flame"></div>
+      <div class="blue circle"></div>
+      <div class="black circle"></div>
+    </div>
+    <div class="container">
+      <div class="red flame"></div>
+      <div class="orange flame"></div>
+      <div class="yellow flame"></div>
+      <div class="white flame"></div>
+      <div class="blue circle"></div>
+      <div class="black circle"></div>
+    </div>
+    <div class="container">
+      <div class="red flame"></div>
+      <div class="orange flame"></div>
+      <div class="yellow flame"></div>
+      <div class="white flame"></div>
+      <div class="blue circle"></div>
+      <div class="black circle"></div>
+    </div>
+    <div class="container">
+      <div class="red flame"></div>
+      <div class="orange flame"></div>
+      <div class="yellow flame"></div>
+      <div class="white flame"></div>
+      <div class="blue circle"></div>
+      <div class="black circle"></div>
+    </div>
+    <div class="container">
+      <div class="red flame"></div>
+      <div class="orange flame"></div>
+      <div class="yellow flame"></div>
+      <div class="white flame"></div>
+      <div class="blue circle"></div>
+      <div class="black circle"></div>
+    </div>
+    <div class="container">
+      <div class="red flame"></div>
+      <div class="orange flame"></div>
+      <div class="yellow flame"></div>
+      <div class="white flame"></div>
+      <div class="blue circle"></div>
+      <div class="black circle"></div>
+    </div>
+    <div class="container">
+      <div class="red flame"></div>
+      <div class="orange flame"></div>
+      <div class="yellow flame"></div>
+      <div class="white flame"></div>
+      <div class="blue circle"></div>
+      <div class="black circle"></div>
+    </div>
+    <div class="container">
+      <div class="red flame"></div>
+      <div class="orange flame"></div>
+      <div class="yellow flame"></div>
+      <div class="white flame"></div>
+      <div class="blue circle"></div>
+      <div class="black circle"></div>
+    </div>
+    <div class="container">
+      <div class="red flame"></div>
+      <div class="orange flame"></div>
+      <div class="yellow flame"></div>
+      <div class="white flame"></div>
+      <div class="blue circle"></div>
+      <div class="black circle"></div>
+    </div>
+    <div class="container">
+      <div class="red flame"></div>
+      <div class="orange flame"></div>
+      <div class="yellow flame"></div>
+      <div class="white flame"></div>
+      <div class="blue circle"></div>
+      <div class="black circle"></div>
+    </div>
+    <div class="container">
+      <div class="red flame"></div>
+      <div class="orange flame"></div>
+      <div class="yellow flame"></div>
+      <div class="white flame"></div>
+      <div class="blue circle"></div>
+      <div class="black circle"></div>
+    </div>
+    <div class="container">
+      <div class="red flame"></div>
+      <div class="orange flame"></div>
+      <div class="yellow flame"></div>
+      <div class="white flame"></div>
+      <div class="blue circle"></div>
+      <div class="black circle"></div>
+    </div>
+    <div class="container">
+      <div class="red flame"></div>
+      <div class="orange flame"></div>
+      <div class="yellow flame"></div>
+      <div class="white flame"></div>
+      <div class="blue circle"></div>
+      <div class="black circle"></div>
+    </div>
+    <div class="container">
+      <div class="red flame"></div>
+      <div class="orange flame"></div>
+      <div class="yellow flame"></div>
+      <div class="white flame"></div>
+      <div class="blue circle"></div>
+      <div class="black circle"></div>
+    </div>
+    <div class="container">
+      <div class="red flame"></div>
+      <div class="orange flame"></div>
+      <div class="yellow flame"></div>
+      <div class="white flame"></div>
+      <div class="blue circle"></div>
+      <div class="black circle"></div>
+    </div>
+    <div class="metronome">
+      <h1>Metronome</h1>
+      <div class="slider-container">
+        <input type="range" id="bpm" min="20" max="240" value="120" oninput="updateBpmValue(this.value)"/>
+        <div id="bpm-display" class="bpm-display">120</div>
+      </div>
+      <div class="subdivision-container">
+        <input type="text" id="subdivision" placeholder="Subdivision (ex: 4/4)"/>
+      </div>
+      <div class="polyrhythm-container">
+        <input type="text" id="polyrhythm" placeholder="Polyrhythmie (ex: 6/10)"/>
+      </div>
+      <div class="controls">
+        <button id="play-button" class="start">Play</button>
+        <button id="stop-button" class="stop">Stop</button>
+      </div>
+      <audio id="tick-sound-sub" src="beep-21.mp3"></audio>
+      <audio id="tick-sound-poly" src="beep-22.mp3"></audio>
+    </div>
+    <script src="metronome.js" defer></script>
+  </body>
+</html>
