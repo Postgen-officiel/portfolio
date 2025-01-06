@@ -61,7 +61,7 @@ matrixContainer.classList.add('matrix');
 document.body.appendChild(matrixContainer);
 
 const symbols = "⚚A☾✯<⌬O☽♅K♇♃G♁T♄#U☥⌖(☍S☿⛢☬✶⟁F⟠⍟J✙❖N⁜⁂{⧫P⚟✿C⟡⍰ʘX✣]☼⚞M✎I✆⎆⍜★DZ12✤3V45;6P789⎈R0!@#Y$%^F&E*)_♆+-W=[B}|:L',H.>/?";
-const colors = ["green"];
+const colors = ["rgb(0, 161, 0)"];
 const minSpacing = 3;
 
 let numColumns = Math.floor(window.innerWidth / 28); // Initial calculation of columns

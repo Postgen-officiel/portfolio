@@ -115,7 +115,7 @@ iframe {
 
 .matrix div { 
     position: absolute; 
-    color: green;
+    color: rgb(0, 161, 0);
     font-size: 14px; 
     line-height: 14px; 
     white-space: nowrap; 
