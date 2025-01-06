@@ -92,7 +92,7 @@ for (let i = 0; i < numColumns; i++) {
         const firstOpacity = parseFloat(symbols[0].style.opacity);
         const newSymbol = createSymbol(firstOpacity + 0.1); // Nouveau symbole avec opacité croissante
         column.insertBefore(newSymbol, symbols[0]); // Ajoute le nouveau symbole au début
-    }, Math.random() * 660 + 960); // Intervalle de temps aléatoire entre 1000ms et 2000ms
+    }, Math.random() * 660 + 660); // Intervalle de temps aléatoire entre 1000ms et 2000ms
 }
 
 document.addEventListener('DOMContentLoaded', (event) => {
