@@ -1,3 +1,8 @@
+// Fonction pour recharger la page 
+function reloadPage() { 
+    location.reload(); 
+} // Événement pour détecter la rotation de l'écran 
+window.addEventListener('orientationchange', reloadPage);
 document.querySelectorAll('.card').forEach(card => {
     const image = card.querySelector('.card-image');
 
@@ -22,6 +27,8 @@ document.querySelectorAll('.card').forEach(card => {
     };
 
     const handleTouchEvent = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
         const touch = e.touches[0];
         const cardRect = card.getBoundingClientRect();
         const x = touch.clientX - cardRect.left;
@@ -29,10 +36,23 @@ document.querySelectorAll('.card').forEach(card => {
         zoomImage(x, y);
     };
 
+    const allowScrolling = () => {
+        document.body.style.overflow = 'auto';
+    };
+
+    // Ajouter les événements pour la souris
     card.addEventListener('mousemove', handleMouseEvent);
     card.addEventListener('mouseleave', resetImage);
+
+    // Ajouter les événements pour le toucher
     card.addEventListener('touchmove', handleTouchEvent);
-    card.addEventListener('touchend', resetImage);
+    card.addEventListener('touchend', () => {
+        resetImage();
+        allowScrolling();
+    });
+    card.addEventListener('touchstart', () => {
+        document.body.style.overflow = 'hidden';
+    });
 });
 
 const matrixContainer = document.createElement('div');
@@ -41,26 +61,53 @@ document.body.appendChild(matrixContainer);
 
 const symbols = "⚚A☾✯<⌬O☽♅K♇♃G♁T♄#U☥⌖(☍S☿⛢☬✶⟁F⟠⍟J✙❖N⁜⁂{⧫P⚟✿C⟡⍰ʘX✣]☼⚞M✎I✆⎆⍜★DZ12✤3V45;6P789⎈R0!@#Y$%^F&E*)_♆+-W=[B}|:L',H.>/?";
 const colors = ["green"];
-const numColumns = Math.floor(window.innerWidth / 28); // Réduire le nombre de colonnes
 const minSpacing = 3;
 
-let positions = Array.from({ length: numColumns }, (_, i) => i);
+let numColumns = Math.floor(window.innerWidth / 28); // Initial calculation of columns
+let columns = [];
 
-const createColumn = () => {
-    if (positions.length < 3) {
-        positions = Array.from({ length: numColumns }, (_, i) => i);
+const updateColumns = () => {
+    const newNumColumns = Math.floor(window.innerWidth / 28);
+    if (newNumColumns > numColumns) {
+        for (let i = numColumns; i < newNumColumns; i++) {
+            const column = createColumn(i);
+            for (let j = 0; j < 8; j++) {
+                const symbol = createSymbol(j * 0.1);
+                column.appendChild(symbol);
+            }
+            matrixContainer.appendChild(column);
+            columns.push(column);
+        }
+    } else if (newNumColumns < numColumns) {
+        for (let i = numColumns - 1; i >= newNumColumns; i--) {
+            matrixContainer.removeChild(columns[i]);
+            columns.pop();
+        }
     }
+    numColumns = newNumColumns;
+};
 
-    let index = Math.floor(Math.random() * positions.length);
-    let position = positions[index];
-    positions = positions.filter(pos => Math.abs(pos - position) > minSpacing);
-
+const createColumn = (position) => {
     const column = document.createElement('div');
     column.classList.add('column');
-    column.style.left = `${position * 28}px`; // Ajuster la largeur des colonnes
+    column.style.left = `${position * 28}px`;
     column.style.animationDuration = `${Math.random() * 5 + 5}s`;
-    column.style.animationTimingFunction = 'linear'; // Assurez-vous que l'animation est linéaire pour qu'elle aille jusqu'en bas
+    column.style.animationTimingFunction = 'linear';
     column.style.color = colors[Math.floor(Math.random() * colors.length)];
+
+    setInterval(() => {
+        const symbols = column.querySelectorAll('.symbol');
+        column.removeChild(symbols[symbols.length - 1]);
+
+        symbols.forEach((symbol, index) => {
+            symbol.style.opacity = (index * 0.1);
+        });
+
+        const firstOpacity = parseFloat(symbols[0].style.opacity);
+        const newSymbol = createSymbol(firstOpacity + 0.1);
+        column.insertBefore(newSymbol, symbols[0]);
+    }, Math.random() * 330 + 630);
+
     return column;
 };
 
@@ -72,47 +119,52 @@ const createSymbol = (opacity) => {
     return symbol;
 };
 
+// Initial call to set up columns
 for (let i = 0; i < numColumns; i++) {
-    const column = createColumn();
-    for (let j = 0; j < 8; j++) { // Train de 8 caractères
-        const symbol = createSymbol(j * 0.1); // Dégradé d'opacité croissante
+    const column = createColumn(i);
+    for (let j = 0; j < 8; j++) {
+        const symbol = createSymbol(j * 0.1);
         column.appendChild(symbol);
     }
     matrixContainer.appendChild(column);
-
-    setInterval(() => {
-        const symbols = column.querySelectorAll('.symbol');
-        column.removeChild(symbols[symbols.length - 1]); // Supprime le dernier symbole
-
-        // Met à jour les opacités des symboles restants
-        symbols.forEach((symbol, index) => {
-            symbol.style.opacity = (index * 0.1);
-        });
-
-        const firstOpacity = parseFloat(symbols[0].style.opacity);
-        const newSymbol = createSymbol(firstOpacity + 0.1); // Nouveau symbole avec opacité croissante
-        column.insertBefore(newSymbol, symbols[0]); // Ajoute le nouveau symbole au début
-    }, Math.random() * 660 + 660); // Intervalle de temps aléatoire entre 1000ms et 2000ms
+    columns.push(column);
 }
 
-document.addEventListener('DOMContentLoaded', (event) => {
-    const text = "je suis un beatboxer qui voulais une platforme pour trouver des evenements, m'entrainer, apprendre, montré ce que je fait etc.";
-    const wavyText = document.getElementById('wavyText');
+// Update columns on window resize
+window.addEventListener('resize', updateColumns);
 
-    wavyText.innerHTML = "";
 
-    // Ajouter des spans pour chaque lettre du texte
-    for (let i = 0; i < text.length; i++) {
+const text = "je suis un beatboxer qui voulais une platforme pour trouver des évenements, m'entrainer, apprendre, montré ce que je fait etc.";
+const wavyText = document.getElementById('wavyText');
+
+wavyText.innerHTML = "";
+
+// Ajouter des spans pour chaque mot du texte
+const words = text.split(' ');
+words.forEach(word => {
+    const wordSpan = document.createElement('span');
+    wordSpan.style.display = 'inline-block';
+    wordSpan.style.whiteSpace = 'nowrap'; // Empêche la coupure du mot
+
+    // Ajouter des spans pour chaque lettre du mot
+    for (let i = 0; i < word.length; i++) {
         const span = document.createElement('span');
-        span.textContent = text[i] === ' ' ? '\u00A0' : text[i]; // Utiliser l'espace insécable pour les espaces
+        span.textContent = word[i];
         span.classList.add('wave-animation');
-        wavyText.appendChild(span);
+        wordSpan.appendChild(span);
     }
 
-    // Appliquer l'animation à chaque lettre
-    const spans = wavyText.querySelectorAll('.wave-animation');
-    spans.forEach((span, index) => {
-        const delay = index < text.length / 2 ? index * 0.1 : (text.length - index) * 0.1;
-        span.style.animationDelay = `${delay}s`;
-    });
+    // Ajouter un espace insécable après chaque mot
+    const spaceSpan = document.createElement('span');
+    spaceSpan.textContent = '\u00A0';
+    wordSpan.appendChild(spaceSpan);
+
+    wavyText.appendChild(wordSpan);
+});
+
+// Appliquer l'animation à chaque lettre
+const spans = wavyText.querySelectorAll('.wave-animation');
+spans.forEach((span, index) => {
+    const delay = index < text.length / 2 ? index * 0.1 : (text.length - index) * 0.1;
+    span.style.animationDelay = `${delay}s`;
 });

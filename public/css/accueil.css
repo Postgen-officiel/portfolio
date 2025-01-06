@@ -9,20 +9,12 @@ h1 {
     color: purple;
 }
 
-
-@keyframes gradientShift {
-    0% {
-        background-position: 200% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
 p {
     color: rgb(137, 3, 247);
-    display:inline-block;
+    white-space: normal;
+    overflow-wrap: break-word;
 }
+
  
 .wave-animation { 
     display: inline-block; 
@@ -137,15 +129,15 @@ h2 {
     padding: 10px 0;
     color: '';
     display: inline-block;
-    animation: gradientShift 5s linear infinite;
+    animation: gradientShiftReverse 5s linear infinite;
 }
 
-@keyframes gradientShift {
+@keyframes gradientShiftReverse {
     0% {
-        background-position: 200% 50%;
+        background-position: 0% 50%;
     }
     100% {
-        background-position: 0% 50%;
+        background-position: 200% 50%;
     }
 }
 

@@ -18,7 +18,7 @@ h2 {
     background-clip: text;
     color: transparent;
     display: inline-block;
-    animation: gradientShift 5s linear infinite;
+    animation: gradientShiftReverse 5s linear infinite;
 }
 
 h3 {
@@ -40,9 +40,19 @@ h3 {
     }
 }
 
+@keyframes gradientShiftReverse {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 200% 50%;
+    }
+}
+
 p {
     color: rgb(137, 3, 247);
-    display:inline-block;
+    white-space: normal;
+    overflow-wrap: break-word;
 }
  
 .wave-animation { 
