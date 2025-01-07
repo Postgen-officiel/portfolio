@@ -97,11 +97,23 @@ nav ul li a {
     color: white;
     text-decoration: none;
     padding: 5px 10px;
+    border-radius: 5px;
     transition: background-color 0.3s;
 }
 
 nav ul li a:hover {
-    background-color: #575757;
+    background-color: #818181;
+    border-radius: 5px;
+}
+
+nav ul li.active a { 
+    background-color: #333;
+    background: #505050;
+    border-radius: 5px;
+}
+
+nav ul li.active a:hover {
+    background-color: #818181;
     border-radius: 5px;
 }
 
