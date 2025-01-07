@@ -243,38 +243,52 @@ document.addEventListener('DOMContentLoaded', () => {
         let offsetX, offsetY;
         let initialX, initialY, finalX, finalY;
 
-        particle.addEventListener('mousedown', (e) => {
+        const handleStart = (e) => {
             isDragging = true;
-            offsetX = e.clientX - particle.getBoundingClientRect().left;
-            offsetY = e.clientY - particle.getBoundingClientRect().top;
-            initialX = e.clientX;
-            initialY = e.clientY;
+            let touch = e.touches ? e.touches[0] : e;
+            offsetX = touch.clientX - particle.getBoundingClientRect().left;
+            offsetY = touch.clientY - particle.getBoundingClientRect().top;
+            initialX = touch.clientX;
+            initialY = touch.clientY;
             particle.style.cursor = 'grabbing';
-        });
 
-        document.addEventListener('mousemove', (e) => {
+            // Prevent scrolling on touch start
+            e.preventDefault();
+        };
+
+        const handleMove = (e) => {
             if (isDragging) {
-                x = e.clientX - offsetX;
-                y = e.clientY - offsetY;
+                let touch = e.touches ? e.touches[0] : e;
+                x = touch.clientX - offsetX;
+                y = touch.clientY - offsetY;
                 x = Math.max(0, Math.min(window.innerWidth - 60, x));
                 y = Math.max(0, Math.min(window.innerHeight - 60, y));
                 particle.style.left = `${x}px`;
                 particle.style.top = `${y}px`;
-            }
-        });
 
-        document.addEventListener('mouseup', (e) => {
+                // Prevent scrolling on touch move
+                e.preventDefault();
+            }
+        };
+
+        const handleEnd = (e) => {
             if (isDragging) {
                 isDragging = false;
-                finalX = e.clientX;
-                finalY = e.clientY;
+                let touch = e.changedTouches ? e.changedTouches[0] : e;
+                finalX = touch.clientX;
+                finalY = touch.clientY;
                 directionX = finalX - initialX > 0 ? 1 : -1;
                 directionY = finalY - initialY > 0 ? 1 : -1;
                 speedX = Math.abs(finalX - initialX) / 10;
                 speedY = Math.abs(finalY - initialY) / 10;
                 particle.style.cursor = 'grab';
 
-                // Ajoutez une temporisation avant de reprendre la vitesse initiale
+                // Reset x and y to their initial values
+                x = initialX;
+                y = initialY;
+                particle.style.left = `${x}px`;
+                particle.style.top = `${y}px`;
+
                 setTimeout(() => {
                     let intervalId = setInterval(() => {
                         if (speedX > initialSpeedX) {
@@ -293,9 +307,18 @@ document.addEventListener('DOMContentLoaded', () => {
                             clearInterval(intervalId);
                         }
                     }, 50);
-                }, 1353); // Temporisation de 1,45 secondes
+                }, 1453); 
             }
-        });
+        };
+
+        particle.addEventListener('mousedown', handleStart);
+        particle.addEventListener('touchstart', handleStart);
+
+        document.addEventListener('mousemove', handleMove);
+        document.addEventListener('touchmove', handleMove);
+
+        document.addEventListener('mouseup', handleEnd);
+        document.addEventListener('touchend', handleEnd);
 
         function moveParticle() {
             if (!isDragging) {
@@ -322,5 +345,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         moveParticle();
-    });
+    }); 
 });
