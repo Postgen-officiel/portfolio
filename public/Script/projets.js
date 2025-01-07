@@ -125,3 +125,4 @@ document.addEventListener('DOMContentLoaded', (event) => {
         span.style.animationDelay = `${delay}s`;
     });
 });
+

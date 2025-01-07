@@ -133,7 +133,6 @@ for (let i = 0; i < numColumns; i++) {
 // Update columns on window resize
 window.addEventListener('resize', updateColumns);
 
-
 const text = "je suis un beatboxer qui voulais une platforme pour trouver des évenements, m'entrainer, apprendre, montré ce que je fait etc.";
 const wavyText = document.getElementById('wavyText');
 
@@ -164,7 +163,12 @@ words.forEach(word => {
 
 // Appliquer l'animation à chaque lettre
 const spans = wavyText.querySelectorAll('.wave-animation');
+const centerIndex = Math.floor(spans.length / 2);
+
 spans.forEach((span, index) => {
-    const delay = index < text.length / 2 ? index * 0.1 : (text.length - index) * 0.1;
+    const delay = index <= centerIndex ? index * 0.1 : (spans.length - index) * 0.1;
     span.style.animationDelay = `${delay}s`;
+     // Ajuste cette valeur selon tes besoins
 });
+
+

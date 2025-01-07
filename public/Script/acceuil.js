@@ -165,7 +165,11 @@ words.forEach(word => {
 
 // Appliquer l'animation à chaque lettre
 const spans = wavyText.querySelectorAll('.wave-animation');
+const centerIndex = Math.floor(spans.length / 2);
+
 spans.forEach((span, index) => {
-    const delay = index < text.length / 2 ? index * 0.1 : (text.length - index) * 0.1;
+    const delay = index <= centerIndex ? index * 0.1 : (spans.length - index) * 0.1;
     span.style.animationDelay = `${delay}s`;
+     // Ajuster cette valeur selon tes besoins
 });
+
