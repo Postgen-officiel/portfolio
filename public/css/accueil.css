@@ -175,12 +175,117 @@ h2 {
     .card-container {
         flex-direction: column; /* Aligner verticalement sur petits écrans */
         align-items: center; /* Centrer les cartes */
+        position: relative; /*peut être à éffacer*/
     }
 
     .card {
         width: 100%; /* Prendre toute la largeur sur petits écrans */
         margin: 10px 0;
     }
+}
+
+.logo-container {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    perspective: 800px;
+    margin: 10px;
+    margin-right: -5px;
+}
+
+.box {
+    position: relative;
+    width: 10vw; /* Équivalent à 200px en unités relatives */
+    height: 10vw; /* Équivalent à 200px en unités relatives */
+    transform-style: preserve-3d;
+    animation: rotate 9s infinite linear;
+}
+
+.cube {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+.cube .front, .cube .back {
+    position: absolute;
+    width: 5vw; /* Équivalent à 100px en unités relatives */
+    height: 5vw; /* Équivalent à 100px en unités relatives */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(57, 57, 57, 0.8);
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-size: 1.2vw; /* Équivalent à 24px en unités relatives */
+    border: 0.1vw solid #333; /* Équivalent à 2px en unités relatives */
+}
+
+.cube .left, .cube .right, .cube .top, .cube .bottom {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-size: 1.2vw; /* Équivalent à 24px en unités relatives */
+    border: 0.1vw solid #333; /* Équivalent à 2px en unités relatives */
+}
+
+.cube .left, .cube .right {
+    width: 0.83vw; /* Équivalent à 16.67px en unités relatives */
+    height: 5vw; /* Équivalent à 100px en unités relatives */
+    background-color: rgba(57, 0, 57, 0.8);
+}
+
+.cube .top, .cube .bottom {
+    width: 5vw; /* Équivalent à 100px en unités relatives */
+    height: 0.83vw; /* Équivalent à 16.67px en unités relatives */
+    background-color: rgba(57, 0, 57, 0.8);
+}
+
+.face1 {
+    transform: rotateX(0deg) translateZ(0.25vw); /* Équivalent à 5px en unités relatives */
+}
+
+.face2 {
+    transform: rotateX(240deg) translateZ(0.25vw); /* Équivalent à 5px en unités relatives */
+}
+
+.face3 {
+    transform: rotateX(120deg) translateZ(0.25vw); /* Équivalent à 5px en unités relatives */
+}
+
+.cube .front {
+    transform: translateZ(0.5vw); /* Équivalent à 10px en unités relatives */
+}
+
+.cube .back {
+    transform: rotateY(180deg) translateZ(0.5vw); /* Équivalent à 10px en unités relatives */
+}
+
+.cube .left {
+    transform: rotateY(-90deg) translateZ(0.45vw); /* Équivalent à 10px en unités relatives */
+}
+
+.cube .right {
+    transform: rotateY(90deg) translateZ(4.45vw); /* Équivalent à 90px en unités relatives */
+}
+
+.cube .top {
+    transform: rotateX(90deg) translateZ(0.45vw); /* Équivalent à 10px en unités relatives */
+}
+
+.cube .bottom {
+    transform: rotateX(-90deg) translateZ(4.5vw); /* Équivalent à 90px en unités relatives */
+}
+
+@keyframes rotate {
+    0%, 13.33% { transform: rotateX(0deg) scale(1); }
+    33.33%, 46.66% { transform: rotateX(120deg) scale(1); }
+    66.66%, 80% { transform: rotateX(240deg) scale(1); }
+    100% { transform: rotateX(360deg) scale(1); }
 }
 
 .matrix {
