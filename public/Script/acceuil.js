@@ -173,3 +173,52 @@ spans.forEach((span, index) => {
      // Ajuster cette valeur selon tes besoins
 });
 
+let startX;
+
+document.addEventListener('touchstart', function(e) {
+  startX = e.touches[0].clientX;
+});
+
+document.addEventListener('touchmove', function(e) {
+  if (!startX) return;
+
+  let endX = e.touches[0].clientX;
+  let diffX = startX - endX;
+
+  if (Math.abs(diffX) > 50) { // Seuil pour le swipe
+    if (diffX > 0) {
+      // Swipe vers la gauche
+      window.location.href = 'about.html'; // Changez pour votre page suivante
+    } else {
+      // Swipe vers la droite
+      window.location.href = 'projets.html'; // Changez pour votre page précédente
+    }
+    startX = null; // Réinitialiser startX
+  }
+});
+
+document.addEventListener('mousedown', function(e) {
+  startX = e.clientX;
+});
+
+document.addEventListener('mousemove', function(e) {
+  if (!startX) return;
+
+  let endX = e.clientX;
+  let diffX = startX - endX;
+
+  if (Math.abs(diffX) > 50) { // Seuil pour le drag
+    if (diffX > 0) {
+      // Drag vers la gauche
+      window.location.href = 'about.html'; // Changez pour votre page suivante
+    } else {
+      // Drag vers la droite
+      window.location.href = 'projets.html'; // Changez pour votre page précédente
+    }
+    startX = null; // Réinitialiser startX
+  }
+});
+
+document.addEventListener('mouseup', function(e) {
+  startX = null; // Réinitialiser startX
+});
