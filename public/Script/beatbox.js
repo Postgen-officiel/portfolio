@@ -1,61 +1,3 @@
-// Fonction pour recharger la page 
-function reloadPage() { 
-    location.reload(); 
-} // Événement pour détecter la rotation de l'écran 
-window.addEventListener('orientationchange', reloadPage);
-document.querySelectorAll('.card').forEach(card => {
-    const image = card.querySelector('.card-image');
-
-    const zoomImage = (x, y) => {
-        image.style.transformOrigin = `${x}px ${y}px`;
-        image.style.transform = 'scale(2)';
-    };
-
-    const resetImage = () => {
-        image.style.transform = 'scale(1) translate(0%, 0.5%)';
-        image.style.transformOrigin = 'center center';
-        setTimeout(() => {
-            image.style.transition = '';
-        }, 100);
-    };
-
-    const handleMouseEvent = (e) => {
-        const cardRect = card.getBoundingClientRect();
-        const x = e.clientX - cardRect.left;
-        const y = e.clientY - cardRect.top;
-        zoomImage(x, y);
-    };
-
-    const handleTouchEvent = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        const touch = e.touches[0];
-        const cardRect = card.getBoundingClientRect();
-        const x = touch.clientX - cardRect.left;
-        const y = touch.clientY - cardRect.top;
-        zoomImage(x, y);
-    };
-
-    const allowScrolling = () => {
-        document.body.style.overflow = 'auto';
-    };
-
-    // Ajouter les événements pour la souris
-    card.addEventListener('mousemove', handleMouseEvent);
-    card.addEventListener('mouseleave', resetImage);
-
-    // Ajouter les événements pour le toucher
-    card.addEventListener('touchmove', handleTouchEvent);
-    card.addEventListener('touchend', () => {
-        resetImage();
-        allowScrolling();
-    });
-    card.addEventListener('touchstart', () => {
-        document.body.style.overflow = 'hidden';
-    });
-});
-
-
 const matrixContainer = document.createElement('div');
 matrixContainer.classList.add('matrix');
 document.body.appendChild(matrixContainer);
@@ -107,7 +49,7 @@ const createColumn = (position) => {
         const firstOpacity = parseFloat(symbols[0].style.opacity);
         const newSymbol = createSymbol(firstOpacity + 0.1);
         column.insertBefore(newSymbol, symbols[0]);
-    }, Math.random() * 630 + 330);
+    }, Math.random() * 130 + 930);
 
     return column;
 };
@@ -135,7 +77,7 @@ for (let i = 0; i < numColumns; i++) {
 window.addEventListener('resize', updateColumns);
 
 
-const text = "Imaginez-vous que j'ai appris le développement en quelques mois ?";
+const text = "Voici quelque vidéo et liens pratique sur moi et mes projets et des projets communs avec des amis.";
 const wavyText = document.getElementById('wavyText');
 
 wavyText.innerHTML = "";
@@ -170,8 +112,9 @@ const centerIndex = Math.floor(spans.length / 2);
 spans.forEach((span, index) => {
     const delay = index <= centerIndex ? index * 0.1 : (spans.length - index) * 0.1;
     span.style.animationDelay = `${delay}s`;
-     // Ajuster cette valeur selon tes besoins
+     // Ajuste cette valeur selon tes besoins
 });
+
 
 let startX;
 
@@ -188,10 +131,10 @@ document.addEventListener('touchmove', function(e) {
   if (Math.abs(diffX) > 50) { // Seuil pour le swipe
     if (diffX > 0) {
       // Swipe vers la gauche
-      window.location.href = 'about.html'; // Changez pour votre page suivante
+      window.location.href = 'accueil.html'; // Changez pour votre page suivante
     } else {
       // Swipe vers la droite
-      window.location.href = 'beatbox.html'; // Changez pour votre page précédente
+      window.location.href = 'projets.html'; // Changez pour votre page précédente
     }
     startX = null; // Réinitialiser startX
   }
@@ -210,10 +153,10 @@ document.addEventListener('mousemove', function(e) {
   if (Math.abs(diffX) > 50) { // Seuil pour le drag
     if (diffX > 0) {
       // Drag vers la gauche
-      window.location.href = 'about.html'; // Changez pour votre page suivante
+      window.location.href = 'accueil.html'; // Changez pour votre page suivante
     } else {
       // Drag vers la droite
-      window.location.href = 'beatbox.html'; // Changez pour votre page précédente
+      window.location.href = 'projets.html'; // Changez pour votre page précédente
     }
     startX = null; // Réinitialiser startX
   }

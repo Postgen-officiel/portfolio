@@ -141,7 +141,7 @@ document.addEventListener('touchmove', function(e) {
   if (Math.abs(diffX) > 50) { // Seuil pour le swipe
     if (diffX > 0) {
       // Swipe vers la gauche
-      window.location.href = 'accueil.html'; // Changez pour votre page suivante
+      window.location.href = 'beatbox.html'; // Changez pour votre page suivante
     } else {
       // Swipe vers la droite
       window.location.href = 'about.html'; // Changez pour votre page précédente
@@ -163,7 +163,7 @@ document.addEventListener('mousemove', function(e) {
   if (Math.abs(diffX) > 50) { // Seuil pour le drag
     if (diffX > 0) {
       // Drag vers la gauche
-      window.location.href = 'accueil.html'; // Changez pour votre page suivante
+      window.location.href = 'beatbox.html'; // Changez pour votre page suivante
     } else {
       // Drag vers la droite
       window.location.href = 'about.html'; // Changez pour votre page précédente
