@@ -18,12 +18,25 @@ h2 {
     margin: 10px;
     margin-top: 60px;
     background-clip: text;
-    color: '';
+    color: transparent;
     display: inline-block;
     animation: gradientShiftReverse 5s linear infinite;
 }
 
 h3 {
+    background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, blueviolet, firebrick);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    padding: 20px;
+    margin: 10px;
+    margin-top: 60px;
+    background-clip: text;
+    font-size: 1.6rem;
+    color: transparent;
+    animation: gradientShift 5s linear infinite;
+}
+
+h4 {
     background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, blueviolet, firebrick);
     background-size: 200% 100%;
     -webkit-background-clip: text;
