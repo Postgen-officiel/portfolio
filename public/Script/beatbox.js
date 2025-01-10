@@ -1,3 +1,10 @@
+// Fonction pour recharger la page 
+function reloadPage() { 
+    location.reload(); 
+} 
+// Événement pour détecter la rotation de l'écran 
+window.addEventListener('orientationchange', reloadPage);
+
 const matrixContainer = document.createElement('div');
 matrixContainer.classList.add('matrix');
 document.body.appendChild(matrixContainer);
