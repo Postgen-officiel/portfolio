@@ -133,6 +133,7 @@ for (let i = 0; i < numColumns; i++) {
 // Update columns on window resize
 window.addEventListener('resize', updateColumns);
 
+
 const text = "je suis un beatboxer qui voulais une platforme pour trouver des évenements, m'entrainer, apprendre, montré ce que je fait etc.";
 const wavyText = document.getElementById('wavyText');
 

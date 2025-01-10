@@ -72,7 +72,7 @@ const updateColumns = () => {
     if (newNumColumns > numColumns) {
         for (let i = numColumns; i < newNumColumns; i++) {
             const column = createColumn(i);
-            for (let j = 0; j < 8; j++) {
+            for (let j = 0; j < 8; j++) { // Adjust number of symbols per column to 8
                 const symbol = createSymbol(j * 0.1);
                 column.appendChild(symbol);
             }
@@ -91,8 +91,8 @@ const updateColumns = () => {
 const createColumn = (position) => {
     const column = document.createElement('div');
     column.classList.add('column');
-    column.style.left = `${position * 28}px`;
-    column.style.animationDuration = `${Math.random() * 5 + 5}s`;
+    column.style.left = `${position * 28}px`; // Adjust column spacing here
+    column.style.animationDuration = `${Math.random() * 5 + 5}s`; // Slow down the column animation
     column.style.animationTimingFunction = 'linear';
     column.style.color = colors[Math.floor(Math.random() * colors.length)];
 
@@ -123,7 +123,7 @@ const createSymbol = (opacity) => {
 // Initial call to set up columns
 for (let i = 0; i < numColumns; i++) {
     const column = createColumn(i);
-    for (let j = 0; j < 8; j++) {
+    for (let j = 0; j < 8; j++) { // Adjust number of symbols per column to 8
         const symbol = createSymbol(j * 0.1);
         column.appendChild(symbol);
     }

@@ -49,6 +49,19 @@ h4 {
     animation: gradientShift 5s linear infinite;
 }
 
+h5 {
+    background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, blueviolet, firebrick);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    padding: 20px;
+    margin: 10px;
+    margin-top: 60px;
+    background-clip: text;
+    font-size: 1.6rem;
+    color: transparent;
+    animation: gradientShiftReverse 5s linear infinite;
+}
+
 @keyframes gradientShift {
     0% {
         background-position: 200% 50%;
@@ -266,12 +279,12 @@ main {
 }
 
 .matrix {
-    position: absolute;
+    position: fixed; /* Utiliser fixed pour couvrir tout l'écran */
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
-    z-index: -2;
+    z-index: -1;
 }
 
 .matrix div { 
@@ -286,7 +299,7 @@ main {
 
 .column {
     position: absolute;
-    top: -100;
+    top: -100px;
     width: 14px;
     animation: fall linear infinite;
 }
@@ -297,13 +310,12 @@ main {
     transition: opacity 1s;
 }
 
-
 @keyframes fall {
     0% {
         transform: translateY(-100%);
     }
     100% {
-        transform: translateY(3919%);
+        transform: translateY(2300%);
     }
 }
 

@@ -21,7 +21,7 @@ const updateColumns = () => {
     if (newNumColumns > numColumns) {
         for (let i = numColumns; i < newNumColumns; i++) {
             const column = createColumn(i);
-            for (let j = 0; j < 8; j++) {
+            for (let j = 0; j < 8; j++) { // Adjust number of symbols per column to 8
                 const symbol = createSymbol(j * 0.1);
                 column.appendChild(symbol);
             }
@@ -40,8 +40,8 @@ const updateColumns = () => {
 const createColumn = (position) => {
     const column = document.createElement('div');
     column.classList.add('column');
-    column.style.left = `${position * 28}px`;
-    column.style.animationDuration = `${Math.random() * 5 + 5}s`;
+    column.style.left = `${position * 28}px`; // Adjust column spacing here
+    column.style.animationDuration = `${Math.random() * 5 + 5}s`; // Slow down the column animation
     column.style.animationTimingFunction = 'linear';
     column.style.color = colors[Math.floor(Math.random() * colors.length)];
 
@@ -56,7 +56,7 @@ const createColumn = (position) => {
         const firstOpacity = parseFloat(symbols[0].style.opacity);
         const newSymbol = createSymbol(firstOpacity + 0.1);
         column.insertBefore(newSymbol, symbols[0]);
-    }, Math.random() * 130 + 930);
+    }, Math.random() * 630 + 330);
 
     return column;
 };
@@ -72,7 +72,7 @@ const createSymbol = (opacity) => {
 // Initial call to set up columns
 for (let i = 0; i < numColumns; i++) {
     const column = createColumn(i);
-    for (let j = 0; j < 8; j++) {
+    for (let j = 0; j < 8; j++) { // Adjust number of symbols per column to 8
         const symbol = createSymbol(j * 0.1);
         column.appendChild(symbol);
     }
@@ -82,46 +82,6 @@ for (let i = 0; i < numColumns; i++) {
 
 // Update columns on window resize
 window.addEventListener('resize', updateColumns);
-
-
-const text = "Voici quelque vidéo et liens pratique sur moi et mes projets et des projets communs avec des amis.";
-const wavyText = document.getElementById('wavyText');
-
-wavyText.innerHTML = "";
-
-// Ajouter des spans pour chaque mot du texte
-const words = text.split(' ');
-words.forEach(word => {
-    const wordSpan = document.createElement('span');
-    wordSpan.style.display = 'inline-block';
-    wordSpan.style.whiteSpace = 'nowrap'; // Empêche la coupure du mot
-
-    // Ajouter des spans pour chaque lettre du mot
-    for (let i = 0; i < word.length; i++) {
-        const span = document.createElement('span');
-        span.textContent = word[i];
-        span.classList.add('wave-animation');
-        wordSpan.appendChild(span);
-    }
-
-    // Ajouter un espace insécable après chaque mot
-    const spaceSpan = document.createElement('span');
-    spaceSpan.textContent = '\u00A0';
-    wordSpan.appendChild(spaceSpan);
-
-    wavyText.appendChild(wordSpan);
-});
-
-// Appliquer l'animation à chaque lettre
-const spans = wavyText.querySelectorAll('.wave-animation');
-const centerIndex = Math.floor(spans.length / 2);
-
-spans.forEach((span, index) => {
-    const delay = index <= centerIndex ? index * 0.1 : (spans.length - index) * 0.1;
-    span.style.animationDelay = `${delay}s`;
-     // Ajuste cette valeur selon tes besoins
-});
-
 
 let startX;
 
@@ -171,4 +131,42 @@ document.addEventListener('mousemove', function(e) {
 
 document.addEventListener('mouseup', function(e) {
   startX = null; // Réinitialiser startX
+});
+
+const text = "Voici quelques vidéos et liens pratiques sur moi, mes projets ainsi que mes projets commun avec mes amis.";
+const wavyText = document.getElementById('wavyText');
+
+wavyText.innerHTML = "";
+
+// Ajouter des spans pour chaque mot du texte
+const words = text.split(' ');
+words.forEach(word => {
+    const wordSpan = document.createElement('span');
+    wordSpan.style.display = 'inline-block';
+    wordSpan.style.whiteSpace = 'nowrap'; // Empêche la coupure du mot
+
+    // Ajouter des spans pour chaque lettre du mot
+    for (let i = 0; i < word.length; i++) {
+        const span = document.createElement('span');
+        span.textContent = word[i];
+        span.classList.add('wave-animation');
+        wordSpan.appendChild(span);
+    }
+
+    // Ajouter un espace insécable après chaque mot
+    const spaceSpan = document.createElement('span');
+    spaceSpan.textContent = '\u00A0';
+    wordSpan.appendChild(spaceSpan);
+
+    wavyText.appendChild(wordSpan);
+});
+
+// Appliquer l'animation à chaque lettre
+const spans = wavyText.querySelectorAll('.wave-animation');
+const centerIndex = Math.floor(spans.length / 2);
+
+spans.forEach((span, index) => {
+    const delay = index <= centerIndex ? index * 0.1 : (spans.length - index) * 0.1;
+    span.style.animationDelay = `${delay}s`;
+     // Ajuster cette valeur selon tes besoins
 });
