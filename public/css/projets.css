@@ -262,3 +262,10 @@ iframe {
         transform: translateY(100%);
     }
 }
+
+@media (max-width: 600px) {
+    header nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+}

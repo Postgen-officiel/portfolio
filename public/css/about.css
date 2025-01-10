@@ -380,3 +380,10 @@ h2 {
     75% { transform: translate(2px, -2px); 
     } 
 }
+
+@media (max-width: 600px) {
+    header nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+}
