@@ -106,7 +106,7 @@ const createColumn = (position) => {
         const firstOpacity = parseFloat(symbols[0].style.opacity);
         const newSymbol = createSymbol(firstOpacity + 0.1);
         column.insertBefore(newSymbol, symbols[0]);
-    }, Math.random() * 330 + 630);
+    }, Math.random() * 630 + 330);
 
     return column;
 };
