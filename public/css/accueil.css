@@ -218,7 +218,7 @@ h2 {
     align-items: center;
     background-color: rgba(57, 57, 57, 0.9734);
     color: #fff;
-    font-family: '';
+    font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 1.2vw; /* Équivalent à 24px en unités relatives */
     border: 0.1vw solid #333; /* Équivalent à 2px en unités relatives */
 }
@@ -229,7 +229,7 @@ h2 {
     justify-content: center;
     align-items: center;
     color: #fff;
-    font-family: '';
+    font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 1.2vw; /* Équivalent à 24px en unités relatives */
     border: 0.1vw solid #333; /* Équivalent à 2px en unités relatives */
 }
@@ -247,39 +247,39 @@ h2 {
 }
 
 .face1 {
-    transform: rotateX(0deg) translateZ(0.25vw); /* Équivalent à 5px en unités relatives */
+    transform: rotateX(0deg) translateZ(0.25vw) scale(1); /* Équivalent à 5px en unités relatives */
 }
 
 .face2 {
-    transform: rotateX(240deg) translateZ(0.25vw); /* Équivalent à 5px en unités relatives */
+    transform: rotateX(240deg) translateZ(0.25vw) scale(1); /* Équivalent à 5px en unités relatives */
 }
 
 .face3 {
-    transform: rotateX(120deg) translateZ(0.25vw); /* Équivalent à 5px en unités relatives */
+    transform: rotateX(120deg) translateZ(0.25vw) scale(1); /* Équivalent à 5px en unités relatives */
 }
 
 .cube .front {
-    transform: translateZ(0.5vw); /* Équivalent à 10px en unités relatives */
+    transform: translateZ(0.5vw) scale(1); /* Équivalent à 10px en unités relatives */
 }
 
 .cube .back {
-    transform: rotateY(180deg) translateZ(0.5vw); /* Équivalent à 10px en unités relatives */
+    transform: rotateY(180deg) translateZ(0.5vw) scale(1); /* Équivalent à 10px en unités relatives */
 }
 
 .cube .left {
-    transform: rotateY(-90deg) translateZ(0.45vw); /* Équivalent à 10px en unités relatives */
+    transform: rotateY(-90deg) translateZ(0.45vw) scale(1); /* Équivalent à 10px en unités relatives */
 }
 
 .cube .right {
-    transform: rotateY(90deg) translateZ(4.45vw); /* Équivalent à 90px en unités relatives */
+    transform: rotateY(90deg) translateZ(4.45vw) scale(1); /* Équivalent à 90px en unités relatives */
 }
 
 .cube .top {
-    transform: rotateX(90deg) translateZ(0.45vw); /* Équivalent à 10px en unités relatives */
+    transform: rotateX(90deg) translateZ(0.45vw) scale(1); /* Équivalent à 10px en unités relatives */
 }
 
 .cube .bottom {
-    transform: rotateX(-90deg) translateZ(4.5vw); /* Équivalent à 90px en unités relatives */
+    transform: rotateX(-90deg) translateZ(4.5vw) scale(1); /* Équivalent à 90px en unités relatives */
 }
 
 @keyframes rotate {

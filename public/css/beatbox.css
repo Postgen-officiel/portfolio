@@ -175,7 +175,7 @@ nav ul li.active a:hover {
     align-items: center;
     background-color: rgba(57, 57, 57, 0.9734);
     color: #fff;
-    font-family: '';
+    font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 1.2vw; /* Équivalent à 24px en unités relatives */
     border: 0.1vw solid #333; /* Équivalent à 2px en unités relatives */
 }
@@ -186,7 +186,7 @@ nav ul li.active a:hover {
     justify-content: center;
     align-items: center;
     color: #fff;
-    font-family: '';
+    font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 1.2vw; /* Équivalent à 24px en unités relatives */
     border: 0.1vw solid #333; /* Équivalent à 2px en unités relatives */
 }

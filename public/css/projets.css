@@ -1,9 +1,8 @@
-/* projets.css */
 body {
     background: #232323;
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0px;
+    padding: 0;
     user-select: none;
 }
 
@@ -91,28 +90,29 @@ nav ul li.active a:hover {
     border-radius: 5px;
 }
 
-.project { 
+.projet { 
     margin-bottom: 30px;
+    justify-content: center; 
+    align-items: center;
+    display: flexbox;
+    flex-direction: column;
 } 
 
 main {
     text-align: center;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
     padding: 60px;
 }
 
-.project h2 { 
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(90deg, red, rgb(148, 97, 0), rgb(148, 148, 0), green, blue, indigo, violet);
-    background-clip: text;
-}
-
 iframe {
-    width: 100%;
+    width: 98vw;
     height: 800px;
     border-radius: 15px;
     border: 3px solid #ccc;
     margin-top: -15px;
+    scale: 1;
 }
 
 .logo-container {
@@ -148,7 +148,7 @@ iframe {
     align-items: center;
     background-color: rgba(57, 57, 57, 0.9734);
     color: #fff;
-    font-family: '';
+    font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 1.2vw; /* Équivalent à 24px en unités relatives */
     border: 0.1vw solid #333; /* Équivalent à 2px en unités relatives */
 }
@@ -159,7 +159,7 @@ iframe {
     justify-content: center;
     align-items: center;
     color: #fff;
-    font-family: '';
+    font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 1.2vw; /* Équivalent à 24px en unités relatives */
     border: 0.1vw solid #333; /* Équivalent à 2px en unités relatives */
 }
